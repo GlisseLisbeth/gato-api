@@ -1,0 +1,15 @@
+#welcome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.box{
+  border: 1px solid red;
+  margin: 5%;
+  padding: 3%;
+}
+.pos-right{
+  float:right;
+}
