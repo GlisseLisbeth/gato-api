@@ -7,17 +7,18 @@ const ItemComentario = (comentario) => {
   const content          = $('<div><span>'+ comentario.name+ ' dice:</div><div>'+comentario.content+'</div>');
 
   itemComentario.append(colContent);
-  colContent.append(content);
+  colContent.prepend(content);
   return itemComentario;
 }
 
-const Comentarios = () => {
+const Comentarios = (update) => {
   const comentarios       = $('<section class="comentarios"></section>');
   const container         = $('<div class="container"></div>');
   const row               = $('<div class="row"></div>');
   const colTitle          = $('<div class="col-md-9 text-center"></div>');
-  const titleComentarios   = $('<h1>Comentarios</h1>');
-  const buttonAdd    = $('<button type="button" class="btn btn-info btn-lg" id="modalThemeNew">Agregar comentario</button>');
+  const titleComentarios  = $('<h1>Comentarios</h1>');
+  const contentHistorial  = $('<span><strong>'+ state.winner+ '</strong> le gano a <strong>'+state.loser+' en '+state.number+'</strong> movimientos </span>');
+  const buttonAdd         = $('<button type="button" class="btn btn-info btn-lg" id="modalThemeNew">Agregar comentario</button>');
   const modal             = $('<div id="modalThemeNew" class="modal"></div>');
   const modalDialog       = $('<div class="modal-dialog role="document"></div>');
   const formModal         = $('<form id="formNewTheme"></form')
@@ -55,11 +56,8 @@ const Comentarios = () => {
        {
          if(res == 'success') {
            modal.css("display","none");
-           state.comments.forEach((comentario) => {
-             console.log(comentario);
-             comentariosDiv.append(ItemComentario(comentario));
-           });
-           alert("datos guardados");
+          comentariosDiv.prepend(ItemComentario(data));
+          update();
          }
        },
        error: function (request, error) {
@@ -77,8 +75,7 @@ const Comentarios = () => {
   });
 
   state.comments.forEach((comentario) => {
-    console.log(comentario);
-    comentariosDiv.append(ItemComentario(comentario));
+    comentariosDiv.prepend(ItemComentario(comentario));
   });
 
   comentarios.append(container);
@@ -86,6 +83,7 @@ const Comentarios = () => {
   row.append(colTitle);
   row.append(buttonAdd);
   colTitle.append(titleComentarios);
+  colTitle.append(contentHistorial);
   comentarios.append(modal);
   modal.append(modalDialog);
   modalDialog.append(formModal);

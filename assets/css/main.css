@@ -9,6 +9,7 @@
   border: 1px solid red;
   margin: 5%;
   padding: 3%;
+  overflow: hidden;
 }
 .pos-right{
   float:right;
