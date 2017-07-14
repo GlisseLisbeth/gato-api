@@ -8,13 +8,14 @@ const render = (rootResponses) => {
   rootResponses.append(wrapper);
 }
 const state ={
-  comments: null,
+  idGame: gameId,
+  comments: null
 }
 
 $( _ => {
-   $.getJSON(api, (dataComments) =>{
+
+  $.getJSON(api, (dataComments) =>{
      state.comments = dataComments;
-     console.log(state.comments);
      render($('#root-comentarios'));
    });
 });
