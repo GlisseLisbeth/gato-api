@@ -9,19 +9,30 @@ const ItemGameCat = (update, pos) => {
 const GameCats = (update) => {
   const games       = $('<section class="games"></section>');
   const container         = $('<div class="container"></div>');
-  const rowTurn              = $('<div class="row text-center"></div>');
+  const rowTurn           = $('<div class="row text-center"></div>');
   const colTitleTurn      = $('<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>');
   const turn              = $('<u><h1 class="name-turno"> Turno de '+state.turn+'</h1></u>');
 
-  const rowGames              = $('<div class="row text-center"></div>');
-  const colGame      = $('<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>');
-  const rowGameCats      = $('<div class="row"></div>');
+  const rowGames          = $('<div class="row text-center"></div>');
+  const colGame           = $('<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>');
+  const rowGameCats       = $('<div class="row"></div>');
   for(let i = 0; i < 9; i++){
     rowGameCats.append(ItemGameCat(update, i+1));
   }
-  const colMov      = $('<div class="move col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>');
-  const labelMovPlayer1 = $('<label class="move-player1">Movimientos '+state.player1+' '+state.movPlayer1+'</label>');
-  const labelMovPlayer2 = $(' <label  class="move-player2">Movimientos '+state.player2+' '+state.movPlayer2+'</label>');
+  const colMov            = $('<div class="move col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>');
+  const labelMovPlayer1   = $('<label class="move-player1">Movimientos '+state.player1+' '+state.movPlayer1+'</label>');
+  const labelMovPlayer2   = $(' <label  class="move-player2">Movimientos '+state.player2+' '+state.movPlayer2+'</label>');
+  const rowWin            = $('<div class="win row"></div>');
+  const colWin            = $('<div class="moves-player col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>');
+  const labelWin          = $('<label class="labelWin">Este es un texto</label>');
+  const viewHistorial    = $('<a class="view-historial pos-right" href="historial.html" >Mandar al historial</a>');
+
+  viewHistorial.on('click', (e) => {
+    e.preventDefault();
+    location.href="historial.html";
+    update();
+  })
+
   games.append(container);
   container.append(rowTurn);
   rowTurn.append(colTitleTurn);
@@ -32,5 +43,9 @@ const GameCats = (update) => {
   rowGames.append(colMov);
   colMov.append(labelMovPlayer1);
   colMov.append(labelMovPlayer2);
+  container.append(rowWin);
+  rowWin.append(colWin);
+  colWin.append(labelWin);
+  colWin.append(viewHistorial);
   return games;
 }
