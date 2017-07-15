@@ -1,3 +1,5 @@
+'use strict';
+
 let gameId = getParameterByName('game_id');
 const api = 'http://test-ta.herokuapp.com/games/'+gameId+'/comments';
 

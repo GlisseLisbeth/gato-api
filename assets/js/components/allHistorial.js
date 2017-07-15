@@ -10,11 +10,9 @@ const ItemHistorial = (historial, update) => {
 
   viewResponses.on('click', (e) => {
     e.preventDefault();
-    alert("Entro");
     localStorage.setItem("winner_player", historial.winner_player);
     localStorage.setItem("loser_player", historial.loser_player);
     localStorage.setItem("number_of_turns_to_win", historial.number_of_turns_to_win);
-    console.log("El ganador en historial es"+localStorage.getItem("winner_player"));
     location.href="comentario.html?game_id="+historial.id;
     update();
   })

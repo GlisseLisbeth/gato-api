@@ -1,9 +1,17 @@
-#welcome{
+#welcome, #games, .games .move{
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+.buttonCat{
+  margin: 3%;
+  width: 14vw;
+  height: 35vh;
+}
+#gameCat{
+  display: none;
 }
 .box{
   border: 1px solid red;
@@ -13,4 +21,13 @@
 }
 .pos-right{
   float:right;
+}
+
+.input-group{
+  margin: 5%;
+}
+.games .move{
+  -webkit-flex-flow: column;
+  flex-flow: column;
+  align-items: flex-start;
 }
